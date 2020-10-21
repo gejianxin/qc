@@ -1,0 +1,21 @@
+{
+  "name": "qc",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "vue": "^3.0.0-rc.1",
+    "vue-router": "^4.0.0-beta.13",
+    "vuex": "^4.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "esbuild": "^0.7.17",
+    "typescript": "~3.9.3",
+    "vite": "^1.0.0-rc.1"
+  }
+}

@@ -1,40 +1,28 @@
 <template>
   <div class="dropdown">
-    <button type="button" class="btn btn-outline-primary dropdown-toggle" @click="toogleOpen" data-toggle="dropdown">{{action}}</button>
-  <div>{{i}}</div>
-    <div class="dropdown-menu" :style="{display: 'block'}" :hidden="isOpen">
-      <a class="dropdown-item" href="#">登录</a>
-      <!-- <a v-if="login" class="dropdown-item" href="#">注销</a> -->
-      <a class="dropdown-item" href="#">zhuxiao</a>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">{{sayHello}}</button>
+    <div class="dropdown-menu" :style="{display: 'block'}" :hidden="isLogin">
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, Ref } from 'vue';
+import { defineComponent, ref } from 'vue';
+// import DropdownItem from './DropdownItem.vue';
 
 export default defineComponent({
   name: 'Dropdown',
   props: {
-    login: {
+    isLogin: {
       type: Boolean,
       required: true
     },
-    action: {
+    sayHello: {
       type: String,
       required: true,
     }
   },
-  setup() {
-    let isOpen = ref(false);
-    let i = ref(0);
-    const toogleOpen = () => {
-      isOpen.value = !isOpen.value;
-      i.value = i.value+1;
-    };
-    return { i, isOpen, toogleOpen };
-  }
-
 });
 </script>
 

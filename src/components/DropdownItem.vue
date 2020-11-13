@@ -9,11 +9,5 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
    name: 'DropdownItem',
-   props: {
-       id: {
-           type: String,
-           required: true,
-       }
-   } 
 })
 </script>

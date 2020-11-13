@@ -3,7 +3,7 @@ interface User {
     name: string,
     cell: number,
     department: string,
-};
+}
 
 interface Subject {
     member: User[],
@@ -14,4 +14,10 @@ interface Subject {
     benefit: number,
 }
 
-export { User, Subject };
+interface RuleProp {
+    type: 'required' | 'email',
+    message: string,
+}
+
+export { User, Subject }
+export type RulesProp = RuleProp[]

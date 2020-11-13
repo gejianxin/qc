@@ -1,30 +1,47 @@
 <template>
-  <div class="dropdown">
-    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">{{sayHello}}</button>
-    <div class="dropdown-menu" :style="{display: 'block'}" :hidden="isOpen">
+  <div class="dropdown" ref="dropdownRef">
+    <button
+      type="button"
+      class="btn btn-outline-primary dropdown-toggle"
+      data-toggle="dropdown"
+      @click.prevent="toogleHidden"
+    >
+      {{ sayHello }}
+    </button>
+    <div class="dropdown-menu" :style="{ display: 'block' }" :hidden="isHidden">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref, watch, onMounted, onUnmounted } from "vue";
+import useClickOutside from "../hooks/useClickOutside";
 
 export default defineComponent({
-  name: 'Dropdown',
+  name: "Dropdown",
   props: {
-    isOpen: {
-      type: Boolean,
-      required: true
-    },
     sayHello: {
       type: String,
-      required: true
-    }
-  }
-})
+      required: true,
+    },
+  },
+  setup() {
+    const dropdownRef = ref<null | HTMLElement>(null);
+    const isHidden = ref(true);
+    const toogleHidden = () => {
+      isHidden.value = !isHidden.value;
+    };
+    const isClickOutside = useClickOutside(dropdownRef);
+    watch(isClickOutside, () => {
+      if (!isHidden.value && isClickOutside.value) {
+        isHidden.value = true;
+      }
+    });
+    return { isHidden, dropdownRef, toogleHidden };
+  },
+});
 </script>
 
 <style>
-
 </style>

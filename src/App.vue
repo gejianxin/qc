@@ -1,6 +1,6 @@
 <template>
   <Header :user="user"></Header>
-
+  <LoginForm></LoginForm>
 </template>
 
 <script lang="ts">

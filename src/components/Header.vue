@@ -5,8 +5,7 @@
       <dropdown-item href="#">登录</dropdown-item>
       <dropdown-item href="#">注销</dropdown-item>
     </Dropdown>
-  </nav>>
-  <div>This is a div element</div>
+  </nav>
 </template>
 
 <script lang="ts">
